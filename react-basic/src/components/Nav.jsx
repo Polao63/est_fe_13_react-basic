@@ -1,5 +1,7 @@
 //Nav 컴포넌트
-function Nav({ data, onChangeMode }) {
+import { memo } from "react";
+
+const Nav = memo(function Nav({ data, onChangeMode }) {
   console.log("Nav render");
   const lists = data.map(d => (
     <li key={d.id}>
@@ -9,7 +11,7 @@ function Nav({ data, onChangeMode }) {
         onClick={e => {
           // console.log(e.target.dataset.id);
           e.preventDefault();
-          onChangeMode(Number(e.target.dataset.id));
+          onChangeMode(e.target.dataset.id);
         }}
       >
         {d.title}
@@ -23,5 +25,5 @@ function Nav({ data, onChangeMode }) {
       <ul>{lists}</ul>
     </nav>
   );
-}
+});
 export default Nav;
